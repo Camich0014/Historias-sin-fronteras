@@ -68,7 +68,7 @@ let current="Todos";
 function render(){
  const q=document.getElementById("search").value.toLowerCase();
  const list=stories.filter(s=>(current==="Todos"||s.genre===current)&&(s.title+s.genre+s.text).toLowerCase().includes(q));
- document.getElementById("grid").innerHTML=list.map((s,i)=>`<article class="card"><div class="cover ${s.cover}">${s.icon}</div><div class="card-body"><span class="tag">${s.genre}</span><h3>${s.title}</h3><p>${s.text.slice(0,105)}...</p><button class="btn read" onclick="readStory(${stories.indexOf(s)})">Leer historia →</button></div></article>`).join("")||"<p>No encontramos historias con esa búsqueda.</p>";
+ document.getElementById("grid").innerHTML=list.map((s,i)=>`<article class="card"><div class="cover ${s.cover}">${s.icon}</div><div class="card-body"><span class="tag">${s.genre}</span><h3>${s.title}</h3><p>${s.text.slice(0,105)}...</p><button class="btn read" onclick="readStory(${stories.indexOf(s)})">Leer historia →</button></div></article>`).join("")||"<p>No encontramos historias con esa búsqueda.</p>";image:"boda.png".
 }
 function filterCat(cat,el){current=cat;document.querySelectorAll(".cat").forEach(x=>x.classList.remove("active"));el.classList.add("active");render()}
 function readStory(i){let s=stories[i];document.getElementById("readerContent").innerHTML=`<span class="tag">${s.genre}</span><h2>${s.icon} ${s.title}</h2><div class="story">${s.text}</div>`;document.getElementById("reader").style.display="block";document.getElementById("reader").scrollIntoView({behavior:"smooth"})}
